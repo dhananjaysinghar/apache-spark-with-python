@@ -42,7 +42,7 @@ def read_mongo_with_partitioning():
         .format("mongo") \
         .option("partitioner", "MongoPaginateByCountPartitioner") \
         .option("partitionKey", "_id") \
-        .option("partitionSize", PARTITION_SIZE) \
+        .option("partitionSize", str(PARTITION_SIZE)) \
         .load()
 
     df = df.repartition(num_partitions)
