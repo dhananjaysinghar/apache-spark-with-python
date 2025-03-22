@@ -4,10 +4,10 @@
 
 ## SPARK DETAILS libs required
 ```
-	org.mongodb.spark#mongo-spark-connector_2.12;3.0.2 in central
-	org.mongodb#mongodb-driver-sync;4.0.5 in central
-	org.mongodb#bson;4.0.5 in central
-	org.mongodb#mongodb-driver-core;4.0.5 in central
+	org.mongodb.spark#mongo-spark-connector_2.12;3.0.2
+	org.mongodb#mongodb-driver-sync;4.0.5
+	org.mongodb#bson;4.0.5
+	org.mongodb#mongodb-driver-core;4.0.5
 ```
 
 
