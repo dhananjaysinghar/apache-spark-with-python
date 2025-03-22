@@ -1,11 +1,3 @@
-##  Create a virtual environment
-```python -m venv venv```
-
-## Activate Virtual Environment
-- Mac: ```source venv/bin/activate```
-- Windows: ```venv\Script\activate```
-
-
 ## create a file with name 'requirements.txt' and run below command
 ```pip install -r ./requirements.txt```
 
@@ -36,3 +28,10 @@ brew install apache-spark
 ```
 docker run --name mongodb -p 27017:27017 -e MONGODB_USERNAME=test_user -e MONGODB_ROOT_PASSWORD=root_password -e MONGODB_PASSWORD=test_password -e MONGODB_DATABASE=test_database -d bitnami/mongodb:latest
 ```
+
+##  Create a virtual environment
+```python -m venv venv```
+
+## Activate Virtual Environment
+- Mac: ```source venv/bin/activate```
+- Windows: ```venv\Script\activate```
