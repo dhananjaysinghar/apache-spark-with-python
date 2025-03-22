@@ -1,18 +1,18 @@
 /Users/dhananjayasamantasinghar/Desktop/test-python/venv/bin/python3 /Users/dhananjayasamantasinghar/Desktop/test-python/src/test/test_pyspark/test.py 
 Total records: 215, Computed partitions: 5
-25/03/22 13:31:36 WARN Utils: Your hostname, Dhananjayas-MacBook-Pro-Max.local resolves to a loopback address: 127.0.0.1; using 192.168.29.63 instead (on interface en0)
-25/03/22 13:31:36 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+25/03/22 20:11:30 WARN Utils: Your hostname, Dhananjayas-MacBook-Pro-Max.local resolves to a loopback address: 127.0.0.1; using 192.168.29.63 instead (on interface en0)
+25/03/22 20:11:30 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
 :: loading settings :: url = jar:file:/Users/dhananjayasamantasinghar/Desktop/test-python/venv/lib/python3.12/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
 Ivy Default Cache set to: /Users/dhananjayasamantasinghar/.ivy2/cache
 The jars for the packages stored in: /Users/dhananjayasamantasinghar/.ivy2/jars
 org.mongodb.spark#mongo-spark-connector_2.12 added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-20bcb366-4f36-40aa-853e-d52ae05e00f6;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-634e362b-6edd-4f2b-8495-d4bffcf63700;1.0
 	confs: [default]
 	found org.mongodb.spark#mongo-spark-connector_2.12;3.0.2 in central
 	found org.mongodb#mongodb-driver-sync;4.0.5 in central
 	found org.mongodb#bson;4.0.5 in central
 	found org.mongodb#mongodb-driver-core;4.0.5 in central
-:: resolution report :: resolve 86ms :: artifacts dl 4ms
+:: resolution report :: resolve 90ms :: artifacts dl 3ms
 	:: modules in use:
 	org.mongodb#bson;4.0.5 from central in [default]
 	org.mongodb#mongodb-driver-core;4.0.5 from central in [default]
@@ -24,10 +24,10 @@ org.mongodb.spark#mongo-spark-connector_2.12 added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   4   |   0   |   0   |   0   ||   4   |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-20bcb366-4f36-40aa-853e-d52ae05e00f6
+:: retrieving :: org.apache.spark#spark-submit-parent-634e362b-6edd-4f2b-8495-d4bffcf63700
 	confs: [default]
-	0 artifacts copied, 4 already retrieved (0kB/2ms)
-25/03/22 13:31:36 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+	0 artifacts copied, 4 already retrieved (0kB/3ms)
+25/03/22 20:11:30 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
 == Parsed Logical Plan ==
@@ -72,5 +72,8 @@ only showing top 10 rows
 
 Total records in DataFrame: 215
 Partitioned Parquet files saved at: /Users/dhananjayasamantasinghar/.ivy2/data/bookings_partitioned
+Spark Master: local[*]
+Number of CPU cores available: 14
+Active Executors: 0
 
 Process finished with exit code 0
