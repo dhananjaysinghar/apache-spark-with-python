@@ -1,6 +1,7 @@
 from pyspark.sql import SparkSession
 from pymongo import MongoClient
 import math
+import multiprocessing
 
 # Constants
 MONGO_URI = "mongodb://test:password@localhost:27017/order-handling.bookings?authSource=admin"
@@ -8,6 +9,8 @@ DATABASE_NAME = "order-handling"
 COLLECTION_NAME = "bookings"
 PARTITION_SIZE = 50  # Number of records per partition
 PARQUET_PATH = "/Users/dhananjayasamantasinghar/.ivy2/data/bookings_partitioned"
+
+
 # /Users/dhananjayasamantasinghar/.ivy2/jars
 
 def get_total_record_count():
@@ -29,22 +32,21 @@ def read_mongo_with_partitioning():
     num_partitions = max(1, math.ceil(total_records / PARTITION_SIZE))
     print(f"Total records: {total_records}, Computed partitions: {num_partitions}")
 
-    spark = SparkSession.builder \
-        .appName("MongoDB Partitioned Read") \
-        .config("spark.jars.packages", "org.mongodb.spark:mongo-spark-connector_2.12:3.0.2") \
-        .config("spark.mongodb.input.uri", MONGO_URI) \
-        .config("spark.mongodb.input.database", DATABASE_NAME) \
-        .config("spark.mongodb.input.collection", COLLECTION_NAME) \
-        .getOrCreate()
+    spark = (SparkSession.builder
+             .appName("MongoDB Partitioned Read")
+             .config("spark.jars.packages", "org.mongodb.spark:mongo-spark-connector_2.12:3.0.2")
+             .config("spark.mongodb.input.uri", MONGO_URI)
+             .config("spark.mongodb.input.database", DATABASE_NAME)
+             .config("spark.mongodb.input.collection", COLLECTION_NAME)
+             # .config("spark.executor.memory", "4g")
+             # .config("spark.executor.cores", "2")
+             # .config("spark.num.executors", "5")
+             .getOrCreate())
 
-        # num_executors = (total_nodes * cores_per_node) / cores_per_executor
-        # Executors: (total_nodes * cores_per_node) / cores_per_executor
-        # Cores per executor: 2-5 (default = 4)
-        # Memory per executor: (total_memory / total_executors) * 0.75
-
-        # .config("spark.executor.memory", "4g") \
-        # .config("spark.executor.cores", "2") \
-        # .config("spark.num.executors", "5") \
+    # num_executors = (total_nodes * cores_per_node) / cores_per_executor
+    # Executors: (total_nodes * cores_per_node) / cores_per_executor
+    # Cores per executor: 2-5 (default = 4)
+    # Memory per executor: (total_memory / total_executors) * 0.75
 
     df = spark.read \
         .format("mongo") \
@@ -73,6 +75,12 @@ def read_mongo_with_partitioning():
     df.write.mode("overwrite").parquet(PARQUET_PATH)
     print(f"Partitioned Parquet files saved at: {PARQUET_PATH}")
 
+    sc = spark.sparkContext
+
+    print(f"Spark Master: {spark.sparkContext.master}")
+    print(f"Number of CPU cores available: {multiprocessing.cpu_count()}")
+    # Count the number of executors (excluding driver)
+    print(f"Active Executors: {(sc._jsc.sc().getExecutorMemoryStatus().size()) - 1}")
 
     spark.stop()
 
