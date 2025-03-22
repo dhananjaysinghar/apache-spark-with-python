@@ -35,8 +35,16 @@ def read_mongo_with_partitioning():
         .config("spark.mongodb.input.uri", MONGO_URI) \
         .config("spark.mongodb.input.database", DATABASE_NAME) \
         .config("spark.mongodb.input.collection", COLLECTION_NAME) \
-        .master("local[*]") \
         .getOrCreate()
+
+        # num_executors = (total_nodes * cores_per_node) / cores_per_executor
+        # Executors: (total_nodes * cores_per_node) / cores_per_executor
+        # Cores per executor: 2-5 (default = 4)
+        # Memory per executor: (total_memory / total_executors) * 0.75
+
+        # .config("spark.executor.memory", "4g") \
+        # .config("spark.executor.cores", "2") \
+        # .config("spark.num.executors", "5") \
 
     df = spark.read \
         .format("mongo") \
