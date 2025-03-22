@@ -23,3 +23,8 @@
 ```
 brew install apache-spark
 ```
+
+## if you want to use Jars instead of packages
+```
+.config("spark.jars", r"file:///path_to_jars/org.mongodb.spark_mongo-spark-connector_2.12-3.0.2.jar, path_to_jars...., ...")
+```
