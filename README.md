@@ -28,3 +28,5 @@ brew install apache-spark
 ```
 .config("spark.jars", r"file:///path_to_jars/org.mongodb.spark_mongo-spark-connector_2.12-3.0.2.jar, path_to_jars...., ...")
 ```
+
+<img width="1248" alt="image" src="https://github.com/user-attachments/assets/a3113205-5f69-465c-8e0e-5398f5d0c072" />
