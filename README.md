@@ -17,3 +17,9 @@
 	org.mongodb#bson;4.0.5 in central
 	org.mongodb#mongodb-driver-core;4.0.5 in central
 ```
+
+
+# Install Spark in local machine:
+```
+brew install apache-spark
+```
