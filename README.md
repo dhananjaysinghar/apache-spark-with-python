@@ -30,3 +30,9 @@ brew install apache-spark
 ```
 
 <img width="1248" alt="image" src="https://github.com/user-attachments/assets/a3113205-5f69-465c-8e0e-5398f5d0c072" />
+
+
+## MongoDB Docker Image:
+```
+docker run --name mongodb -p 27017:27017 -e MONGODB_USERNAME=test_user -e MONGODB_ROOT_PASSWORD=root_password -e MONGODB_PASSWORD=test_password -e MONGODB_DATABASE=test_database -d bitnami/mongodb:latest
+```
